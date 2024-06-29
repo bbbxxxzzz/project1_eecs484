@@ -51,7 +51,7 @@ CREATE TABLE User_Hometown_Cities(
     hometown_city_id INTEGER NOT NULL,
     PRIMARY KEY(user_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
-    FOREIGN KEY (hometown_city_id) REFERENCES Cities(city_id),
+    FOREIGN KEY (hometown_city_id) REFERENCES Cities(city_id)
 );
 
 CREATE TABLE Messages(
