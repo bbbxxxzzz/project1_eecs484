@@ -102,7 +102,7 @@ CREATE TABLE Participants (
     event_id NUMBER NOT NULL,
     user_id NUMBER NOT NULL,
     confirmation VARCHAR2(100) NOT NULL,
-    PRIMARY KEY (event_id, user_id)
+    PRIMARY KEY (event_id, user_id),
     FOREIGN KEY (event_id) REFERENCES User_Events(event_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     CHECK (confirmation IN ('Attending', 'Declines', 'Unsure', 'Not_Replied'))
