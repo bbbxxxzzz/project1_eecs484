@@ -26,4 +26,4 @@ DROP TABLE Cities;
 DROP TRIGGER Order_Friends_Pairs;
 DROP TABLE Friends;
 
-DROP TABLE 
+DROP TABLE Users;
