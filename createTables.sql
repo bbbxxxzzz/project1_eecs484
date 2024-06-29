@@ -49,7 +49,7 @@ CREATE TABLE User_Current_Cities(
 CREATE TABLE User_Hometown_Cities(
     user_id NUMBER NOT NULL,
     hometown_city_id INTEGER NOT NULL,
-    PRIMARY KEY(user_id)
+    PRIMARY KEY(user_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (hometown_city_id) REFERENCES Cities(city_id),
 );
@@ -76,7 +76,7 @@ CREATE TABLE Education(
     user_id NUMBER NOT NULL,
     program_id NUMBER NOT NULL,
     program_year INTEGER NOT NULL,
-    PRIMARY KEY(user_id, program_id)
+    PRIMARY KEY(user_id, program_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (program_id) REFERENCES Programs(program_id)
 );
