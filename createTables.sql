@@ -49,9 +49,9 @@ CREATE TABLE User_Current_Cities(
 CREATE TABLE User_Hometown_Cities(
     user_id NUMBER NOT NULL,
     hometown_city_id INTEGER NOT NULL,
+    PRIMARY KEY(user_id)
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (hometown_city_id) REFERENCES Cities(city_id),
-    PRIMARY KEY(user_id)
 );
 
 CREATE TABLE Messages(
