@@ -4,7 +4,7 @@ CREATE TABLE Users(
     last_name VARCHAR(100) NOT NULL,
     year_of_birth INTEGER,
     month_of_birth INTEGER,
-    day_of_month INTEGER,
+    day_of_birth INTEGER,
     gender VARCHAR(100)
 );
 
