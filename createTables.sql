@@ -25,7 +25,7 @@ CREATE OR REPLACE TRIGGER Order_Friend_Pairs
                 temp := :NEW.user2_id;
                 :NEW.user2_id := :NEW.user1_id;
                 :NEW.user1_id := temp;
-            END IF ;
+            END IF;
         END;
 /
 
@@ -36,6 +36,18 @@ CREATE TABLE Cities(
     country_name VARCHAR2(100) NOT NULL,
     UNIQUE(city_name, state_name, country_name)
 );
+
+CREATE SEQUENCE city_sequence 
+    START WITH 1 
+    INCREMENT BY 1;
+
+CREATE OR REPLACE TRIGGER generate_city_id
+    BEFORE INSERT ON Cities 
+    FOR EACH ROW
+        BEGIN 
+            SELECT city_sequence.NEXTVAL INTO :NEW.city_id FROM DUAL;
+        END;
+/
 
 
 CREATE TABLE User_Current_Cities(
@@ -71,6 +83,18 @@ CREATE TABLE Programs(
     degree VARCHAR2(100) NOT NULL,
     UNIQUE(institution, concentration, degree)
 );
+
+CREATE SEQUENCE program_sequence 
+    START WITH 1 
+    INCREMENT BY 1;
+
+CREATE TRIGGER generate_program_id
+    BEFORE INSERT ON Programs
+    FOR EACH ROW
+        BEGIN
+            SELECT program_sequence.NEXTVAL INTO: NEW.program_id FROM DUAL;
+        END;
+/
 
 CREATE TABLE Education(
     user_id NUMBER NOT NULL,
@@ -146,27 +170,3 @@ CREATE TABLE Tags (
     FOREIGN KEY (tag_photo_id) REFERENCES Photos(photo_id),
     FOREIGN KEY (tag_subject_id) REFERENCES Users(user_id)
 );
-
-CREATE SEQUENCE city_sequence 
-    START WITH 1 
-    INCREMENT BY 1;
-
-CREATE OR REPLACE TRIGGER generate_city_id
-    BEFORE INSERT ON Cities 
-    FOR EACH ROW
-        BEGIN 
-            SELECT city_sequence.NEXTVAL INTO :NEW.city_id FROM DUAL;
-        END;
-/
-
-CREATE SEQUENCE program_sequence 
-    START WITH 1 
-    INCREMENT BY 1;
-
-CREATE TRIGGER generate_program_id
-    BEFORE INSERT ON Programs
-    FOR EACH ROW
-        BEGIN
-            SELECT program_sequence.NEXTVAL INTO: NEW.program_id FROM DUAL;
-        END;
-/
