@@ -23,7 +23,7 @@ DROP TRIGGER generate_city_id;
 DROP SEQUENCE city_sequence;
 DROP TABLE Cities;
 
-DROP TRIGGER order_friends_pairs;
+DROP TRIGGER Order_Friends_Pairs;
 DROP TABLE Friends;
 
 DROP TABLE 
